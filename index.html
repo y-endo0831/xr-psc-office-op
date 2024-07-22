@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <!-- 起動コマンド -->
+    <!-- browser-sync start --server --https true -->
+    <a-scene>
+      <a-assets>
+      </a-assets>
+      <!-- カメラ ※要素の位置を固定する-->
+      <a-camera position="0 0 0">
+        <!-- マスク -->
+        <a-entity
+          id="overlay"
+          geometry="primitive: plane; width: 100; height: 100"
+          material="color: black; opacity: 0.9"
+          position="0 0 -5"
+          >
+        </a-entity>
+        <!-- スタートボタン -->
+        <a-entity
+          id="startButton"
+          geometry="primitive: plane; width: 2; height: 1"
+          material="color: #fff; opacity: 0.8"
+          position="0 0 -4"
+          text="value: start!; align: center; color: black; width: 6"
+          click-start>
+        </a-entity>
+        <a-entity cursor="rayOrigin: mouse" raycaster="objects: #startButton"></a-entity>
+        <!-- 部屋名-->
+        <a-entity id="room-text"></a-entity>
+        <!-- タイマー -->
+        <a-text id="time-text" position="-1.65 -0.65 -1" color="white" value=""></a-text>
+      </a-camera>
+      <!-- 背景表示 -->
+      <a-sky id="backImage" src="./images/snow_image.png"></a-sky>
+      <!-- BGM再生 -->
+      <a-sound id="sound01" src="./audio/room1_bgm.mp3"></a-sound>
+    </a-scene>
+    <script src="main.js"></script>
+  </body>
+</html>
